@@ -7,3 +7,5 @@ frontend/node_modules
 dist
 
 frontend/dist
+
+prisma/migrations
