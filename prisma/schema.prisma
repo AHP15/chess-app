@@ -11,7 +11,57 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
+  id                   Int       @id @default(autoincrement())
+  username             String    @db.VarChar(255)
+  email                String    @unique @db.VarChar(255)
+  reset_password_token String?
+  created_at           DateTime  @default(now())
+  updated_at           DateTime?
+
+  friends   User[] @relation("Friendship")
+  friendsOf User[] @relation("Friendship")
+
+  black_player_of Game[] @relation("black_player")
+  white_player_of Game[] @relation("white_player")
+  winner_od       Game[] @relation("winner")
+
+  sender_of FriendshipRequest[] @relation("friendShipRequest")
+  reciever_of FriendshipRequest[] @relation("requestRecieving")
+}
+
+model FriendshipRequest {
+  id         Int       @id @default(autoincrement())
+
+  sender_id Int
+  sender User @relation("friendShipRequest", fields: [sender_id], references: [id])
+
+  reciever_id Int
+  reciever User @relation("requestRecieving", fields: [reciever_id], references: [id])
+}
+
+model Game {
+  id         Int       @id @default(autoincrement())
+  created_at DateTime  @default(now())
+  updated_at DateTime?
+
+  black_player_id Int
+  black_player    User @relation("black_player", fields: [black_player_id], references: [id])
+
+  white_player_id Int
+  white_player    User @relation("white_player", fields: [white_player_id], references: [id])
+
+  winner_id Int
+  winner    User @relation("winner", fields: [winner_id], references: [id])
+
+  moves Move[]
+}
+
+model Move {
+  id          Int    @id @default(autoincrement())
+  public_name String @db.VarChar(255)
+  x           Int
+  y           Int
+
+  game_id Int
+  game    Game @relation(fields: [game_id], references: [id])
 }
