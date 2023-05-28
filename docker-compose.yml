@@ -9,13 +9,12 @@ services:
       - ./:/app
     environment:
       DATABASE_URL: postgresql://postgres:secret@postgresql:5432/chess?schema=SCHEMA
-      TEST_DATABASE_URL: postgresql://postgres:secret@postgresql:5432/chess_test?schema=SCHEMA
   postgresql:
     image: postgres:15.3
     volumes:
       - chess-postgresql-data:/var/lib/mysql
     environment:
       POSTGRES_PASSWORD: secret
-      POSTGRES_DB: chess, chess_test
+      POSTGRES_DB: chess
 volumes:
   chess-postgresql-data:
