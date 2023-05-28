@@ -31,6 +31,8 @@ model User {
 
 model FriendshipRequest {
   id         Int       @id @default(autoincrement())
+  created_at           DateTime  @default(now())
+  updated_at           DateTime?
 
   sender_id Int
   sender User @relation("friendShipRequest", fields: [sender_id], references: [id])
@@ -41,6 +43,7 @@ model FriendshipRequest {
 
 model Game {
   id         Int       @id @default(autoincrement())
+  timer_minutes Int
   created_at DateTime  @default(now())
   updated_at DateTime?
 
