@@ -9,7 +9,7 @@
     "dev:js": "nodemon dist/server.js",
     "dev": "concurrently npm:dev:*",
     "start": "sudo docker-compose up",
-    "test": "jest -coverage --all"
+    "test": "jest --all --coverage"
   },
   "repository": {
     "type": "git",
