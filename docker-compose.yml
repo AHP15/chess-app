@@ -1,6 +1,7 @@
 services:
   app:
     image: node:18-alpine
+    container_name: chess_app
     command: sh -c "cd frontend && yarn install && yarn run build && cd .. && yarn install && npx prisma migrate dev --name init && npx tsc && yarn run dev"
     ports:
       - 8080:8080
