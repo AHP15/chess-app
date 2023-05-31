@@ -1,4 +1,4 @@
-const request = async (options, route='') => {
+export const request = async (options: { method: string, body: any}, route='') => {
   const res = await fetch(`http://localhost:8080/${route}`, {
     ...options,
     headers: {
@@ -6,7 +6,5 @@ const request = async (options, route='') => {
     }
   });
   const data = await res.json();
-  return {status: res.status, data };
+  return { status: res.status, data };
 };
-
-module.exports = { request };

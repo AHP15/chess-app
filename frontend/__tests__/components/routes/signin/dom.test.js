@@ -9,8 +9,7 @@ import '@testing-library/jest-dom'
 import SignIn from '../../../../src/components/routes/signin';
 
 it('should increment the counter', async () => {
-  const { container } = render(<SignIn />,);
-
+  const { container } = render(<SignIn />)
   // Act
   await userEvent.click(screen.getByText('Click me'));
   const paragraph = container.querySelector('.counter')

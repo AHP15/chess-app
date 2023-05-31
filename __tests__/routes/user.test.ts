@@ -1,4 +1,4 @@
-const { request } = require('../../utils/request');
+import { request } from '../../utils/request';
 
 const requests = {
   signup: () => request({
@@ -20,11 +20,19 @@ const requests = {
 
 jest.setTimeout(60000);
 
+interface Response {
+  status: string,
+  value: {
+    status: number,
+    data: any,
+  }
+};
+
 describe("Test the signup and signin routes", () => {
-  let responses;
+  let responses: Response[];
   beforeAll(async () => {
     // send all requests in parallel
-    responses = await Promise.allSettled(Object.values(requests).map(req => req()));
+    responses = await Promise.allSettled(Object.values(requests).map(req => req()))as Response[]
   });
   // signup route
   test("It should respond to the post method for signup route", () => {
