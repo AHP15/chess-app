@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays the right title 1`] = `
+<div>
+  <p
+    className="text-3xl font-bold underline"
+  >
+    SignIn page
+  </p>
+  <p
+    className="counter"
+  >
+    0
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</div>
+`;
