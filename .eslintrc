@@ -7,8 +7,16 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "ignorePatterns": ["**/dist/", "**/frontend/dist/"],
+  "ignorePatterns": [
+    "**/dist/",
+    "**/frontend/dist/",
+    "**/__tests__/",
+    "**/frontend/__tests__/",
+    "**/babel.config.js",
+    "**/jest.config.js"
+  ],
   "rules": {
-    "no-console": "error"
+    "no-console": "error",
+    "import/no-unresolved": "off"
   }
 }
