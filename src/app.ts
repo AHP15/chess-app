@@ -1,12 +1,11 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 
-const app = express();
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const app = express()
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.json());
 
 const prisma = new PrismaClient();
 async function main() {
@@ -16,7 +15,11 @@ async function main() {
 }
 main();
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../frontend/dist/index.html'));
+app.post('/api/v1/auth/signup', (req, res) => {
+  console.log(req.body);
+  res.status(201).send({...req.body});
+});
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
 });
 export default app;
