@@ -10,6 +10,7 @@ app.use(express.json());
 const prisma = new PrismaClient();
 async function main() {
   const allUsers = await prisma.user.findMany();
+  /* eslint-disable no-console */
   console.log('All users', allUsers);
 }
 main();

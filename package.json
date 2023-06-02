@@ -9,7 +9,8 @@
     "dev:js": "nodemon dist/server.js",
     "dev": "concurrently npm:dev:*",
     "start": "sudo docker-compose up",
-    "test": "jest --all --coverage"
+    "test": "jest --all --coverage",
+    "lint": "npx eslint --fix . && npx stylelint \"**/*.{css,scss}\" --fix"
   },
   "repository": {
     "type": "git",
@@ -35,8 +36,20 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jsdom": "^22.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
     "nodemon": "^2.0.22",
     "prisma": "^4.14.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.0.4"
   },

@@ -1,12 +1,13 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError } from 'react-router-dom';
 
 interface ErrorPage {
-  statusText: string,
-  message: string,
-};
+  statusText: string;
+  message: string;
+}
 
 export default function ErrorPage() {
   const error = useRouteError() as ErrorPage;
+  /* eslint-disable no-console */
   console.error(error);
 
   return (

@@ -10,4 +10,4 @@ export default function SignIn() {
       <button onClick={() => setCounter(prev => prev + 1)}>Click me</button>
     </div>
   );
-};
+}
